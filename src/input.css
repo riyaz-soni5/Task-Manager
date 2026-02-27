@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme{
+    --color-primary: #F0F1F4;
+    --color-secondary: white;
+    --color-accent:#3A82D9;
+    --color-borderColor: #6a7282 ;
+    --color-completed: #36B764;
+    --color-pending:#FBAE46;
+    --color-high-priority: #E95254;
+    --color-active: #3A82D9;
+}
+

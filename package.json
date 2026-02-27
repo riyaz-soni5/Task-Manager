@@ -1,0 +1,24 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/riyaz-soni5/Task-Manager#readme",
+  "bugs": {
+    "url": "https://github.com/riyaz-soni5/Task-Manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riyaz-soni5/Task-Manager.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.0",
+    "tailwindcss": "^4.2.0"
+  }
+}
