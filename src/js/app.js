@@ -1,43 +1,40 @@
 'use strict';
 
 import { themeChanger } from "./themeChanger.js";
-import { Task } from "./Task.js";
-import { displayTaskDiv } from "./generateTaskDiv.js";
+import { renderTask } from "./manageTask.js";
+import { addTask } from "./addTask.js";
+import {getLocalStorage} from "./storeTask.js";
+import {allFilter, completedFilter, pendingFilter, highPriorityFilter,search } from "./searchAndFilter.js";
 
-
-
-let taskCollection = [];
 
 
 document.addEventListener('DOMContentLoaded',()=>{
-    
+    const allBtn = document.querySelector('.all-tab')
+
+    const completedBtn = document.querySelector('.completed-tab');
+    const pendingBtn = document.querySelector('.pending-tab');
+    const highPriorityBtn = document.querySelector('.high-tab');
+    const searchField = document.getElementById('searchInput');
+
     themeChanger();
 
 
-    document.querySelector('form').addEventListener('submit',(e)=>{
-        e.preventDefault();
-
-        let taskTittle = document.getElementById("task-title");
-        let taskPriority = document.getElementById("priority");
-        let taskDate = new Date().toLocaleDateString();
-
-        const NewTask = new Task(taskTittle.value,taskPriority.value,taskDate);
-
-
-        taskCollection.push(NewTask);
-        
-
-        displayTaskDiv(taskCollection[taskCollection.length-1]);
-        clearForm(taskTittle, taskPriority)
-    })
-
-
-
-
-
-    function clearForm(title,priority){
-        title.value = '';
-        priority.value = '';
+    let taskData = getLocalStorage();
+    
+    if(taskData != null){
+        renderTask(taskData);
     }
+
+    allBtn.addEventListener('click',allFilter)
+
+    completedBtn.addEventListener('click',completedFilter)
+
+    pendingBtn.addEventListener('click',pendingFilter)
+
+    highPriorityBtn.addEventListener('click',highPriorityFilter)
+
+    searchField.addEventListener('input',search);
+
+    addTask();
 
 })

@@ -7,6 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-800: oklch(27.8% 0.033 256.848);
@@ -25,6 +26,8 @@
     --color-secondary: white;
     --color-accent: #3A82D9;
     --color-borderColor: #6a7282;
+    --color-completed: #36B764;
+    --color-pending: #FBAE46;
     --color-active: #3A82D9;
   }
 }
@@ -210,8 +213,8 @@
   .flex {
     display: flex;
   }
-  .grid {
-    display: grid;
+  .hidden {
+    display: none;
   }
   .size-6 {
     width: calc(var(--spacing) * 6);
@@ -228,6 +231,9 @@
   .h-full {
     height: 100%;
   }
+  .h-screen {
+    height: 100vh;
+  }
   .w-full {
     width: 100%;
   }
@@ -236,21 +242,6 @@
   }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .grid-flow-col {
-    grid-auto-flow: column;
-  }
-  .grid-cols-1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  .grid-rows-3 {
-    grid-template-rows: repeat(3, minmax(0, 1fr));
-  }
-  .grid-rows-4 {
-    grid-template-rows: repeat(4, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -281,6 +272,9 @@
   }
   .gap-5 {
     gap: calc(var(--spacing) * 5);
+  }
+  .overflow-auto {
+    overflow: auto;
   }
   .overflow-hidden {
     overflow: hidden;
@@ -322,11 +316,17 @@
   .bg-active {
     background-color: var(--color-active);
   }
+  .bg-completed {
+    background-color: var(--color-completed);
+  }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
   .bg-gray-500 {
     background-color: var(--color-gray-500);
+  }
+  .bg-pending {
+    background-color: var(--color-pending);
   }
   .bg-primary {
     background-color: var(--color-primary);
@@ -357,6 +357,9 @@
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
   .text-black {
     color: var(--color-black);
@@ -426,6 +429,18 @@
       padding-inline: calc(var(--spacing) * 5);
     }
   }
+  .\*\*\:cursor-pointer {
+    :is(& *) {
+      cursor: pointer;
+    }
+  }
+  .hover\:bg-red-500 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-red-500);
+      }
+    }
+  }
   .focus\:outline-0 {
     &:focus {
       outline-style: var(--tw-outline-style);
@@ -472,6 +487,11 @@
       grid-row: span 11 / span 11;
     }
   }
+  .sm\:row-span-full {
+    @media (width >= 40rem) {
+      grid-row: 1 / -1;
+    }
+  }
   .sm\:row-start-1 {
     @media (width >= 40rem) {
       grid-row-start: 1;
@@ -482,9 +502,19 @@
       grid-row-start: 2;
     }
   }
-  .sm\:h-screen {
+  .sm\:grid {
     @media (width >= 40rem) {
-      height: 100vh;
+      display: grid;
+    }
+  }
+  .sm\:grid-flow-row {
+    @media (width >= 40rem) {
+      grid-auto-flow: row;
+    }
+  }
+  .sm\:auto-rows-auto {
+    @media (width >= 40rem) {
+      grid-auto-rows: auto;
     }
   }
   .sm\:grid-cols-12 {
@@ -495,6 +525,11 @@
   .sm\:grid-rows-12 {
     @media (width >= 40rem) {
       grid-template-rows: repeat(12, minmax(0, 1fr));
+    }
+  }
+  .sm\:items-start {
+    @media (width >= 40rem) {
+      align-items: flex-start;
     }
   }
   .dark\:border-secondary {

@@ -17,7 +17,6 @@ const themeChanger = () => {
         
 
     })
-
 };
 
 export {themeChanger}
