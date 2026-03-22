@@ -29,10 +29,10 @@ function makeTaskDiv(title,priority,date,status,indexValue){
 
 
 
-    taskTitleDiv.classList.add("row-start-1", "task-title");
-    taskPriority.classList.add("row-start-2", "task-priority");
-    taskDate.classList.add("row-start-3", "col-start-1", "task-date")
-    taskActionWraper.classList.add("row-start-3","col-start-3", "col-span-2" ,"action-wraper")
+    taskTitleDiv.classList.add("sm:row-start-1", "task-title");
+    taskPriority.classList.add("sm:row-start-2", "task-priority");
+    taskDate.classList.add("sm:row-start-3", "col-start-1", "task-date")
+    taskActionWraper.classList.add("sm:row-start-3","col-start-3", "col-span-2" ,"action-wraper")
     taskActionContainer.classList.add("*:border", "*:p-2" ,"flex" ,"flex-row" , "w-full", "*:w-full","**:cursor-pointer", "gap-3" ,"action-container");
 
     taskTitleDiv.innerText = title;
@@ -101,8 +101,6 @@ function makeTaskDiv(title,priority,date,status,indexValue){
             renderTask(currentTasksData);
             updateTaskInput.value = "";
             updateTaskPriority.value = "Low Priority"
-
-            // window.location.reload();
         }
 
     }

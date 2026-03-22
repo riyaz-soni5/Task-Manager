@@ -25,13 +25,21 @@ document.addEventListener('DOMContentLoaded',()=>{
         renderTask(taskData);
     }
 
-    allBtn.addEventListener('click',allFilter)
+    allBtn.addEventListener('click', ()=>{
+        allFilter(allBtn.value)
+    })
 
-    completedBtn.addEventListener('click',completedFilter)
+    completedBtn.addEventListener('click', ()=>{
+        completedFilter(completedBtn.value)
+    })
 
-    pendingBtn.addEventListener('click',pendingFilter)
+    pendingBtn.addEventListener('click',()=>{
+        pendingFilter(pendingBtn.value)
+    })
 
-    highPriorityBtn.addEventListener('click',highPriorityFilter)
+    highPriorityBtn.addEventListener('click',()=>{
+        highPriorityFilter(highPriorityBtn.value)
+    })
 
     searchField.addEventListener('input',search);
 

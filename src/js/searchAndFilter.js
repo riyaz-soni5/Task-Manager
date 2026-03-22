@@ -1,20 +1,39 @@
 import { renderTask } from "./manageTask.js";
 import { getLocalStorage } from "./storeTask.js";
 
+const filtertabs = document.querySelectorAll(".filter");
 
-function allFilter(){
+
+function changeActiveTab(e){
+    filtertabs.forEach((btn)=>{
+        btn.classList.remove('bg-active');
+
+        if(btn.value == e){
+            btn.classList.add('bg-active')
+        }
+
+        
+    })
+}
+
+
+
+function allFilter(value){
+    changeActiveTab(value)
     let currentTask = getLocalStorage();
 
     renderTask(currentTask)
 }
-function completedFilter(){
+function completedFilter(value){
+    changeActiveTab(value)
     let currentTask = getLocalStorage();
 
     let completeTask = currentTask.filter((task)=> task.status == "completed")??[];
 
     renderTask(completeTask);
 }
-function pendingFilter(){
+function pendingFilter(value){
+    changeActiveTab(value)
     let currentTask = getLocalStorage();
     
     let pendingTask = currentTask.filter((task)=> task.status == "pending")??[];
@@ -22,7 +41,8 @@ function pendingFilter(){
     renderTask(pendingTask);
 }
 
-function highPriorityFilter(){
+function highPriorityFilter(value){
+    changeActiveTab(value)
     let currentTask = getLocalStorage();
     
     let highPriorityTask = currentTask.filter((task)=> task.priority == "High Priority")??[];
